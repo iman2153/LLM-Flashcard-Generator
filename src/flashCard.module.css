@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.body{
+  background-color: #1B262C;
+  color: #ED6663;
+}
+
+
+.flashCard {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 20px;
+    margin-left: 6px;
+    margin-right: 2px;
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    background-color: #1B262C;
+  }
+  
+  .flipped {
+    transform: rotateY(180deg);
+    margin-left: 6px;
+    margin-right: 2px;
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 3px solid;
+  }
+  
+  .front {
+    color: #ED6663;
+    border-color: #ED6663;
+  }
+  
+  .back {
+    border-color: #65a8e2;
+    color: #65a8e2;
+    transform: rotateY(180deg);
+  }
+  
+  
+  .flashCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .appContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contentContainer {
+    display: flex;
+    justify-content: center;
+    /* align-self: center; */
+  }
+
+  .tableHead{
+    text-align: center;
+  }
+  
