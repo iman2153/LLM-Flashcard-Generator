@@ -10,20 +10,20 @@ const APIFetcher = () => {
     const [apiResponse, setApiResponse] = useState('');
     const [apiMessages, setApiMessages] = useState([]);
     const [dictionary, setDictionary] = useState({});
-  
+
     useEffect(() => {
       console.log("API Messages:", apiMessages);
     }, [apiMessages]);
-  
+
     useEffect(() => {
       console.log("Dictionary:", dictionary);
     }, [dictionary]);
-  
+
     const handleAPIClick = async () => {
       const response = await fetchData(apiPrompt);
       setApiResponse(response);
       setApiMessages([...apiMessages, response]);
-  
+
       try {
         const parsedDictionary = JSON.parse(response);
         setDictionary(parsedDictionary);
@@ -32,19 +32,13 @@ const APIFetcher = () => {
         // Handle the error condition here
       }
     };
-  
+
     const handlePromptChange = (event) => {
       setApiPrompt(event.target.value);
     };
-  
+
     return (
       <div className="main-container">
-        {/* Top bar with demo and login buttons */}
-        <div className="top-bar">
-          <button className="btn btn-primary" style={{ marginRight: '10px' }}>Demo</button>
-          <button className="btn btn-primary">Login</button>
-        </div>
-  
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{ marginBottom: '1rem', fontFamily: 'Arial', fontWeight: 'bold', fontSize: '5rem' }}>Cardify Pro</h1>
           <p style={{ marginBottom: '1rem', fontSize: '1rem' }}>Paste in your notes below to convert them into flashcards</p>
@@ -67,5 +61,5 @@ const APIFetcher = () => {
       </div>
     );
   };
-  
+
 export default APIFetcher;

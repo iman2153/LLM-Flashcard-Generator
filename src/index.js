@@ -8,14 +8,11 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Router>
-      <Routes> {/* Use Routes component instead of Switch */}
-        <Route path="/" element={<Home />} />
-        <Route path="/api" element={<App />} />
-      </Routes>
-    </Router>
-  </React.StrictMode>
+  <Router>
+    <React.StrictMode>
+      <App/>
+    </React.StrictMode>
+  </Router>
 );
 
 reportWebVitals();
