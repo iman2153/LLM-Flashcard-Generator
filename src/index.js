@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes instead of Switch
-import Home from './Homepage';
+// import Home from './Homepage';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

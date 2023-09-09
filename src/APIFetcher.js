@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import FlashCard from './flashcard.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import fetchData from './fetch.js';
-import FileUpload from './file_upload.js';
 import './App.css';
 
 const APIFetcher = () => {
@@ -10,6 +9,7 @@ const APIFetcher = () => {
     const [apiResponse, setApiResponse] = useState('');
     const [apiMessages, setApiMessages] = useState([]);
     const [dictionary, setDictionary] = useState({});
+    const [apiKey, setApiKey] = useState('');
 
     useEffect(() => {
       console.log("API Messages:", apiMessages);
@@ -20,7 +20,7 @@ const APIFetcher = () => {
     }, [dictionary]);
 
     const handleAPIClick = async () => {
-      const response = await fetchData(apiPrompt);
+      const response = await fetchData(apiPrompt, apiKey); // Pass the apiKey to fetchData
       setApiResponse(response);
       setApiMessages([...apiMessages, response]);
 
@@ -37,12 +37,23 @@ const APIFetcher = () => {
       setApiPrompt(event.target.value);
     };
 
+    const handleApiKeyChange = (event) => {
+      setApiKey(event.target.value);
+    };
+
     return (
       <div className="main-container">
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{ marginBottom: '1rem', fontFamily: 'Arial', fontWeight: 'bold', fontSize: '5rem' }}>Cardify Pro</h1>
+          <p style={{ marginBottom: '1rem', fontSize: '1rem' }}>Verify your OPENAI API key</p>
+          <input
+            type="text"
+            value={apiKey}
+            onChange={handleApiKeyChange} // Use a separate handler for the API key
+            className="form-control mb-3"
+            style={{ width: '300px', fontSize: '1rem' }}
+          />
           <p style={{ marginBottom: '1rem', fontSize: '1rem' }}>Paste in your notes below to convert them into flashcards</p>
-          {/* Rest of your existing code... */}
           <input
             type="text"
             value={apiPrompt}
@@ -60,6 +71,6 @@ const APIFetcher = () => {
         </div>
       </div>
     );
-  };
+};
 
 export default APIFetcher;

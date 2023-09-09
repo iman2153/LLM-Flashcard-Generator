@@ -1,5 +1,4 @@
-const MY_KEY = process.env.REACT_APP_API_KEY;
-async function fetchData(prompt) {
+async function fetchData(prompt,apiKey) {
     const predefinedContext = 'write in a json format: ';
     const updatedPrompt = `${predefinedContext} ${prompt}`;
   
@@ -7,7 +6,7 @@ async function fetchData(prompt) {
       const response = await fetch("https://api.openai.com/v1/completions", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${MY_KEY}`,
+          Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
